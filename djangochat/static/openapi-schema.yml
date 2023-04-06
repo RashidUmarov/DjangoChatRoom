@@ -1,0 +1,330 @@
+openapi: 3.0.2
+info:
+  title: Django chats application
+  version: ''
+  description: API for Django chats
+servers:
+  - url: http://localhost:8000/
+    description: Dev server
+paths:
+  /api/rooms/:
+    get:
+      operationId: listofRooms
+      description: 'Get list of Rooms'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Room'
+          description: 'Успешный ответ со списком комнат'
+      tags:
+      - room
+    post:
+      operationId: createRoom
+      description: 'Create Chat Room '
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: 'Успешное создание комнаты с её описанием'
+      tags:
+      - room
+  /api/rooms/{id}/:
+    get:
+      operationId: retrieveRoom
+      description: 'Get Chat Room by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Room.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: 'Успешный ответ с описанием комнаты'
+      tags:
+      - room
+    put:
+      operationId: updateRoom
+      description: 'Update Room by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Room.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: 'Успешная замена с новым описанием комнаты'
+      tags:
+      - room
+    patch:
+      operationId: partialUpdateTodo
+      description: 'Partioal Update Room by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Room.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Room'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Room'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Room'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Room'
+          description: 'Успешное частичное изменение  с описанием комнаты'
+      tags:
+      - room
+    delete:
+      operationId: destroyRoom
+      description: 'Delete Room by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Room.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: 'Успешный ответ после удаления комнаты'
+      tags:
+      - room
+  /api/messages/:
+    get:
+      operationId: listofMessages
+      description: 'Get list of Messages'
+      parameters: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Message'
+          description: 'Успешный ответ со списком сообщений в чате'
+      tags:
+      - message
+    post:
+      operationId: createMessage
+      description: 'Create Message'
+      parameters: []
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Message'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: 'Успешное создание сообщения'
+      tags:
+      - message
+  /api/messages/{id}/:
+    get:
+      operationId: retrieveMessage
+      description: 'Get Message by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Message.
+        schema:
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: 'Успешное получение сообщения'
+      tags:
+      - message
+    put:
+      operationId: updateMessage
+      description: 'Update Message by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Message.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Message'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: 'Успешная замена сообщения'
+      tags:
+      - message
+    patch:
+      operationId: partialUpdateMessage
+      description: 'Partioal Update Message by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Message.
+        schema:
+          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Message'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Message'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Message'
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Message'
+          description: 'Успешное изменение сообщения'
+      tags:
+      - message
+    delete:
+      operationId: destroyMessage
+      description: 'Delete Message by Id'
+      parameters:
+      - name: id
+        in: path
+        required: true
+        description: A unique integer value identifying this Message.
+        schema:
+          type: string
+      responses:
+        '204':
+          description: 'Успешный ответ после удаления сообщения'
+      tags:
+      - message
+components:
+  schemas:
+    Room:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        name:
+          type: string
+          maxLength: 100
+      required:
+      - name
+    Message:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+          examlpes:
+            - 2
+            - 4
+        date:
+          type: string
+          format: date-time
+          readOnly: true
+          examples:
+            - 2023-01-01T15:00:00+3
+            - 2023-02-05T25:00:00+3
+        value:
+          type: string
+          maxLength: 1000
+          examples:
+            - Привет, как дела!
+            - Здравствуй, у меня все хорошо
+        user:
+          type: string
+          maxLength: 100
+          examples:
+            - Carl
+            - Alice
+            - Bob
+        room:
+          type: string
+          maxLength: 100
+          examples:
+            - Kitchen
+            - Bedroom
+            - Cafe
+      required:
+      - value
