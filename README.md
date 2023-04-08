@@ -1,5 +1,5 @@
 # DjangoChatRoom
-**Django chat c 2-мя типами чатов:  **
+**Django chat c 2-мя типами чатов:**
 1. http://127.0.0.1:8000 на XMLHttpRequest запросах с интервалом 1 секунду 
 2. http://127.0.0.1:8000/choose на WebSocket
 
