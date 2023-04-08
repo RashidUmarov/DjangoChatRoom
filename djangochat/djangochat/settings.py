@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "daphne",
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -69,6 +70,7 @@ TEMPLATES = [
     },
 ]
 
+ASGI_APPLICATION = "djangochat.asgi.application"
 WSGI_APPLICATION = 'djangochat.wsgi.application'
 
 
@@ -126,3 +128,22 @@ STATICFILES_DIRS = [
 ]
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+#   REDIS
+REDIS = False
+
+if REDIS :
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels_redis.core.RedisChannelLayer",
+            "CONFIG": {
+                "hosts": [("localhost", 6379)],
+            },
+        },
+    }
+else:
+    CHANNEL_LAYERS = {
+        "default": {
+            "BACKEND": "channels.layers.InMemoryChannelLayer"
+        }
+    }

@@ -40,3 +40,14 @@ def getMessages(request, room):
 
     messages = Message.objects.filter(room=room_details.id)
     return JsonResponse({"messages":list(messages.values())})
+
+
+# это уже из туториала https://channels.readthedocs.io/en/latest/tutorial/part_1.html
+
+# выбор комнаты
+def index(request):
+    return render(request, "chat/index.html")
+
+# комната чата
+def newroom(request, room_name):
+    return render(request, "chat/newroom.html", {"room_name": room_name})
