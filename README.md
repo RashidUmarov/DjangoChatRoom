@@ -10,7 +10,7 @@
 Для работы проекта нужно установить:
 ```
 pip install django
-rest_project> pip install djangorestframework
-python -m pip install -U channels["daphne"]
+pip install djangorestframework
+pip install -U channels["daphne"]
 
 ```
