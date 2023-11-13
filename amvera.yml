@@ -6,6 +6,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: gunicorn --bind 0.0.0.0:80 djangochat.djangochat.wsgi:application
+  command: gunicorn --bind 0.0.0.0:80 djangochat.djangochat.wsgi:application  --env DJANGO_SETTINGS_MODULE=djangochat.settings
   persistenceMount: /data
   containerPort: 80
