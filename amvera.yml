@@ -8,4 +8,4 @@ build:
 run:
   command: cd djangochat && gunicorn djangochat.asgi:application --env DJANGO_SETTINGS_MODULE=djangochat.settings --bind 0.0.0.0:80
   persistenceMount: /data
-  containerPort: 8000
+  containerPort: 80
