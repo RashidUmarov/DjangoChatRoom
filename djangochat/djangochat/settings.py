@@ -27,6 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['django-chat-james.amvera.io','https://django-chat-james.amvera.io','127.0.0.1']
 
+CSRF_TRUSTED_ORIGINS=['http://django-chat-james.amvera.io','https://django-chat-james.amvera.io']
 
 # Application definition
 
