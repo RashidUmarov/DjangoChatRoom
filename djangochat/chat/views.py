@@ -1,11 +1,14 @@
+from django.views.decorators.csrf import csrf_protect
 from django.shortcuts import render, redirect
 from .models import Room, Message
 from django.http import HttpResponse, JsonResponse
 
 # Create your views here.
+@csrf_protect
 def home(request):
     return render(request, 'home.html')
 
+@csrf_protect
 def room(request, room):
     username = request.GET.get('username')
     room_details = Room.objects.get(name=room)
