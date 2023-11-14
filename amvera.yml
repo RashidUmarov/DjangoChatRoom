@@ -6,6 +6,6 @@ meta:
 build:
   requirementsPath: requirements.txt
 run:
-  command: cd djangochat && gunicorn djangochat.asgi:application --env DJANGO_SETTINGS_MODULE=djangochat.settings --bind 0.0.0.0:80
+  command: cd djangochat && gunicorn -k uvicorn.workers.UvicornWorker djangochat.asgi:application --env DJANGO_SETTINGS_MODULE=djangochat.settings --bind 0.0.0.0:80
   persistenceMount: /data
   containerPort: 80
